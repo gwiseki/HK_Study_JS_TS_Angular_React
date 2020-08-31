@@ -1,0 +1,10 @@
+npm(node package manager) -> dependent on Node.js
+angular also manages packages through npm.
+
+
+
+
+wondering
+- save option in npm?
+- save dev option in npm?
+
