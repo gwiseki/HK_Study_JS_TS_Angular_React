@@ -8,3 +8,11 @@ wondering
 - save option in npm?
 - save dev option in npm?
 
+- h4 tag in html, name of head tag?
+
+
+
+<<errors>>
+Updates were rejected because the tip of your current branch is behind
+https://blog.shovelman.dev/924
+do this, then new local changes are erased!
