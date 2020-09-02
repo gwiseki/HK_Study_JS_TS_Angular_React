@@ -1,5 +1,6 @@
 npm(node package manager) -> dependent on Node.js
 angular also manages packages through npm.
+npm은 웹 개발에 필요한 패키지 뿐 아니라 개발 과정 전반에 활용
 npm list
 npm list --depth=0
 npm install http-server -g
@@ -9,15 +10,49 @@ npm uninstall http-server -S
 -S(--save) option : delete name from package.json file
 
 
-wondering
+
+typesciprt : typed super set of JS
+ts = js + @
+
+es3에는 class 문법이 없다
+es6는 class 문법 존재, but 클래스 내용 안에 메서드만을 수용
+
+
+Anguar--------
+e2e(end-to-end) 폴더 : protractor라는 툴을 이용해 브라우절르 실제로 띄워서 애플리케이션을 통합 테스트할 테스트 코드가 있음.
+.angular-cli.json : angular-cli에서 사용할 설정 파일
+.karma.conf.js : karma라는 단위 테스트 도구의 설정 파일
+.protractor.conf.js : e2e폴더에 선언된 통합 테스트를 실행하기 위핸 protractor 도구의 설정파일
+tslint.json : ts용 구문 체크 설정 파일
+tsconfig.json : ts compile 설정 파일
+src/typing.d.ts : ts에서 사용할 타입 선언 정보 파일
+
+"ng server" 프로젝트를 로컬에서 개발 환경으로 실행하는 명령. 실행 시 webpack을 이용해 소스를 bundling함. 
+
+src/polyfills.ts 파일 : angular에서 필요한 ployfill 스크립트를 미리 선언하는 파일
+
+js 진영에도 웹 app을 위한 테스트 도구가 존재.  앵귤려 CLI기반 프로젝트는 app 실행을 위한 기본 코드 제공 + 테스트 환경 + 코드에 대한 기본 테스트 케이스 까지 제공
+
+화살표 함수(arrow function) : ES6에 추가됐으며 명시적으로 이름이 필요치 않은 함수를 간결하게 표현할 수 있도록 돕는 기능.
+
+
+
+
+
+<<Environment Settings>>
+add extension - press "ctrl+p", type "ext install vscode-icons"
+Add "typescript.tsdk": "C:/Users/gwak0/AppData/Roaming/npm/node_modules/typescript/lib" in settings.json(vscode file)
+
+npm i @angular/cli -g
+
+<<wondering>>
 - save option in npm?
 - save dev option in npm?
-
 - h4 tag in html, name of head tag?
-
-
 
 <<errors>>
 Updates were rejected because the tip of your current branch is behind
 https://blog.shovelman.dev/924
 do this, then new local changes are erased!
+
+powershell로는 ng 명령어가 안먹는 경우가 있다.
