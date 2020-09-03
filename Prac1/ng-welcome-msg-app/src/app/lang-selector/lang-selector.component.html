@@ -1,0 +1,20 @@
+<div id="lang-select">
+    <div class = "lang-box">
+        <img src="/assets/img/South_Korea.png">
+        <label *ngIf="langCode ==='ko'">choosed</label>
+        <button type="button" (click)="setLangCode('ko')"
+            [disabled]="langCode === 'ko'">Korean</button>
+    </div>
+    <div class = "lang-box">
+        <img src="/assets/img/Japan.png">
+        <label *ngIf="langCode ==='jp'">choosed</label>
+        <button type="button" (click)="setLangCode('jp')"
+            [disabled]="langCode === 'jp'">Japan</button>
+    </div>
+    <div class = "lang-box">
+        <img src="/assets/img/Chian.png">
+        <label *ngIf="langCode ==='ch'">choosed</label>
+        <button type="button" (click)="setLangCode('ch')"
+            [disabled]="langCode === 'ch'">China</button>
+    </div>
+</div>
