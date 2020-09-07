@@ -5,10 +5,10 @@ import { LANG_METADATA }from './lang-metadata';
   providedIn: 'root'
 })
 export class I18nSupportService {
-  langCode='ko';
-  //private welcomeMsg;
+  langCode = 'ko';
+  // private welcomeMsg;
 
-  constructor() { 
+  constructor() {
     // this.welcomeMsg={
     //   'ko' : '안녕하세요',
     //   'en' : 'hello',
