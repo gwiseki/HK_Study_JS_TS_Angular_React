@@ -1,0 +1,25 @@
+{
+    "typescript.tsdk": "C:/Users/gwak0/AppData/Roaming/npm/node_modules/typescript/lib",//////////////
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "gitlens.modes": {
+
+        "zen": {
+            "name": "Zen",
+            "statusBarItemName": "Zen",
+            "description": "for a zen-like experience, disables many visual features",
+            "codeLens": false,
+            "currentLine": false,
+            "hovers": false,
+            "statusBar": false
+        },
+        "review": {
+            "name": "Review",
+            "statusBarItemName": "Reviewing",
+            "description": "for reviewing code, enables many visual features",
+            "codeLens": true,
+            "currentLine": true,
+            "hovers": true
+        }
+    },
+    "javascript.implicitProjectConfig.experimentalDecorators": true///////////
+}
