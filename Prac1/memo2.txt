@@ -1,0 +1,29 @@
+앵귤러는 컴포넌트 단위로 뷰를 생성/관리. 뷰를 논리적으로 나누면 분할된 뷰는 앵귤러에서 컴포넌트를 구성하는 단위가 됨. 컴포넌트에는 뷰를 렌더링할 정보인 템플릿이 반드시 있음. 앵귤러 템플릿은 표준 HTML 요소를 바탕으로 앵귤러 고유의 추가적인 문법을 통해서 뷰를 렌더링할 정보와 이벤트 처리 로직을 담고 있음. 결론적으로 app 실행시 ng는 컴포넌트와 템플릿 코드를 바탕으로 뷰를 만듬. ng 기반 웹개발은 뷰와의 관계를 기술하는 것. 뷰와 상호작용할 템플릿/컴포넌트를 작성하고 나면 뷰에 정보를 노출하고 이벤트를 처리하는 것은 ng가 함.
+
+export Class SimpleComponent { } 라는 클래스가 컴포넌트임을 ng에게 알려주기 위해서는 decorator가 필요. component 데코레이터는 ng가 평범한 ts 클래스를 컴포넌트로 인식할 수 있게 하는 역할을 수행. component 데코레이터는 코어(@angular/core) 패키지에서 제공. - import { Component } from '@angular/core'; . 모듈 임포트 후 클래스 바로 위에 cp @를 추가하면 드디어 ng가 원하는 cp의 자격을 갖추게 되었음.
+
+cp @의 첫번째 역할은 cp라는 것을 명시해주는 것, 두번째 역할은 설정 정보, 메타데이터를 받는 것.앵귤러는 cp 생성시 여러정보를 요구하는데, 메타데이터는 cp @를 통해 전달함. cp @에 전달할 수 있는 메타데이터의 종류는 총 18가지, 필수 값은 template과 selector값(컴포넌트는 반드시 뷰를 그릴 정보를 소지해야므로). 
+
+템플릿 정보를 메타데이터에 작성하는 방법은 template과 templateUrl 두가지가 있음. template은 뷰를 그리는데 필요한 템플릿 코드를 인라인으로 메타데이터안에 직접 기술하는 방법. 템플릿 정보가 간단한 경우 template : `<h1>angular is awesome!!</h1>` 이렇게 간단하게 줄 수 있고, 큰 경우 html파일로 분리하여 상대경로로 templateUrl에 포함시키면 ng CLI가 알아서 찾아서 번들링해줌.
+selector는 tp 코드 안에서 cp를 사용할 때 CSS 선택기 문법으로 요소명을 정의하기 위해 사용함(필수요소). styles/stylesUrl도 존재함(스타일 속성을 주고자 할 때 사용) 이제 나머지 13가지 옵션(메타데이터)
+
+작성한 cp를 ng가 다루는 시점은 app을 bootstraping할 때. bootstraping은 브라우저에서 app을 최초 실행할 때 진행되는 과정.
+AppModule은 ng app 실행을 위해 반드시 필요한 모듈인데, cp @와 마찬가지로 NgModule @가 app.module.ts 에서 메타데이터를 받고 있음. 이 때 bootstrap : 과 declaration : 이 cp와 관련된 설정. bootstrap은 app을 bootstraping할 때 어떤 컴포넌트를 사용할 것인지 배열로 선언한 cp 정보임. bootstrap :에 선언된 cp는 브라우저에서 최초 index.html을 요청하여 app을 실행할 때 사용할 cp임. declarations : 는 ng app에서 사용할 모든 cp를 배열로 선언한 정보. cp포함 pipe까지 declarations에 선언.
+ng CLI로 cp를 생성하면 자동으로 AppModule의 declarations에 cp를 선언한다는 것을 제 3장의 실습을 통해 확인. cp 파일을 직접 생성한 경우 반드시 해당 모듈의 declarations에 cp를 선언해야 App에서 사용가능. 
+ng는 TS파일을 JS파일로 컴파일함. 
+src/main.ts에서 platformBrowserDynamic().bootstrapModule(AppModule) 코드로 모듈을 읽어들이고 cp를 컴파일함. 아마 bootstrap:과 declarations:에 컴파일 대상을 지정하는 것일수도..........?
+
+ng로 개발한 app에는 cp tree가 반드시 존재. 한 cp는 여러 cp들을 사용해 뷰를 구성하기 때문. cp tree는 최초 index.html에서 사용할 cp가 트리의 root가 됨.
+
+tp은 cp의 뷰를 구성하는 정보. ng는 표준 html에 ng만의 추가 요소와 문법적 기능으로 작성된 tp 코드를 기반으로 cp의 뷰를 렌더링함.
+기존의 Web 프밍은 뷰를 구성하는 DOM에 직접 접근하여 데이터를 노출시키거나 뷰의 상태를 가져와 일련의 로직을 처리하는 등 일일이 수행하여야 할 명령을 기술하는 방식 - 절차적 프밍(Procedural programming)이라 함. 반면 cp와 뷰 사이를 바인딩하는 방식은 템플릿 안에 cp와 뷰의 관계를 선언 - 선언형 프밍(declarative programming)이라 함. 덕분에 cp안에서 순수하게 로직에만 집중할 수 있음. 필요한 것은 관심있는 뷰의 데이터 및 이벤트와 cp의 특정 속성 및 메서드의 연결고리를 선언하는 일. 이후부터 DOM에 접근하는 역할은 ng에 위임. 이처럼 선언적 방식으로 cp와 뷰의 상호관계를 작성하는 것은 cp와 뷰 사이의 종속성을 줄이는 데에 도움을 줌. 종속성을 완벽하게 제거할 수는 없지만 둘 사이에서 ng가 번거로운 과정을 대신해 줌으로써 상호 간 분리를 이룸. 이 근간은 데이터 바인딩!
+
+
+
+
+
+
+
+wonder
+번들링??
+
