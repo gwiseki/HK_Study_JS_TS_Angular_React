@@ -1,18 +1,122 @@
 npm(node package manager) -> dependent on Node.js
 angular also manages packages through npm.
+npm은 웹 개발에 필요한 패키지 뿐 아니라 개발 과정 전반에 활용
+npm list
+npm list --depth=0
+npm install http-server -g
+npm list -g --depth=0
+
+npm uninstall http-server -S
+-S(--save) option : delete name from package.json file
 
 
 
+typesciprt : typed super set of JS
+ts = js + @
 
-wondering
+es3에는 class 문법이 없다
+es6는 class 문법 존재, but 클래스 내용 안에 메서드만을 수용
+
+
+Angular--------
+앵귤러는 사용자용 애플리케이션 개발을 위한 프레임워크.
+앵귤러는 js로도 개발 가능하긴 함.
+e2e(end-to-end) 폴더 : protractor라는 툴을 이용해 브라우절르 실제로 띄워서 애플리케이션을 통합 테스트할 테스트 코드가 있음.
+.angular-cli.json : angular-cli에서 사용할 설정 파일
+.karma.conf.js : karma라는 단위 테스트 도구의 설정 파일
+.protractor.conf.js : e2e폴더에 선언된 통합 테스트를 실행하기 위핸 protractor 도구의 설정파일
+tslint.json : ts용 구문 체크 설정 파일
+tsconfig.json : ts compile 설정 파일
+src/typing.d.ts : ts에서 사용할 타입 선언 정보 파일
+
+"ng server" 프로젝트를 로컬에서 개발 환경으로 실행하는 명령. 실행 시 webpack을 이용해 소스를 bundling함. 
+
+src/polyfills.ts 파일 : angular에서 필요한 ployfill 스크립트를 미리 선언하는 파일
+
+js 진영에도 웹 app을 위한 테스트 도구가 존재.  앵귤려 CLI기반 프로젝트는 app 실행을 위한 기본 코드 제공 + 테스트 환경 + 코드에 대한 기본 테스트 케이스 까지 제공
+
+화살표 함수(arrow function) : ES6에 추가됐으며 명시적으로 이름이 필요치 않은 함수를 간결하게 표현할 수 있도록 돕는 기능.
+
+ts에서는 선언파일이라고 호명하는 "d.ts"를 가진 파일에 js에는 없는 타입선언 정보를 둠. 따라서 ts의 타입 선언 정보는 기존의 js library를 사용하는 데에 반드시 필요한 파일.
+
+'types' - 타입 정보 없이 작성된 js library의 타입 정보를 관리하는 패키지.  타입스크립트에서 해당 library를 사용할 수 있게 됨.( ex) @types/node, @types/jasmine, @types/jasminewd2, ...)
+npm install --save-dev @types/'패키지명'
+
+
+앵귤러로 app을 개발한다는 것은, 1.사용자와 상호작용할 뷰를 구성 + 뷰와 관련된 일련의 로직 개발 . 두가지를 의미
+또한 이러한 작업은 앵귤러의 아키텍여 위에서 정해진 규칙에 따라 이뤄져야 함.
+앵귤러 개발 : 앵귤러의 구조와 실행방식을 이해하고 이에 맞게 뷰와 비즈니스 로직을 개발하는 방법을 이해하는것.
+
+
+app.component.html 파일에서는 앵귤러에서 뷰를 구성할 마크업을 포함하여 앵귤ㄹ에서 제공하는 문법으로 코드를 작성함. 앵귤러에서는 이 코드를 화면을 구성하는 틀이라는 의미를 붙여 템플릿이라고 함.
+app.component.ts 는 ts로 작성한 클래스. 이 파일에 @Component와 함께 선언된 AppComponent 클래스는 앵귤러에서 제일 중요한 요소인 컴포넌트. 컴포넌트는 뷰에서 일어나는 모든 일을 관리. 보통은 컴포넌트 하나가 화면 전체를 담당하도록 만들지 않고, 기능이나 공통의 관심사를 기준으로 화면 하나를 여러 컴포넌트로 나누어 구성. ex) 게시판의 검색 부분, 글 목록, 페이징 등 기촉적인 컴포넌트 단위가 될 수 있음.
+
+{{userName}} -> AppComponent의 userName 인스턴스
+(click)="setName -> AppComponent의 setName(name) (click 발생시 setName을 실행하라)
+nameInput.value의 nameInput -> #nameInput (템플릿 안에서 DOM 객체를 지역 변수처럼 선언하여 활용하는 방식. #nameInput 속성의 선언된 INPUT 요소 객체를 nameInput으로 사용가능)
+앵귤러의 템플릿 문법으로 작성한 코드는 컴포넌트 클래스의 속성 및 메서드와 관계를 맺음.
+평범한 HTML코드에서, 앵귤러가 제공하는 템플릿 문법으로 작성된 템플릿과 컴포넌트 코드는 앵귤러가 app을 bootstraping 할 때 브라우저가 이해할 수 있는 js 코드와 html로 컴파일. 이때 템플릿과 컴포넌트의 연결고리가 생김.
+@Component : 앵귤러에게 이 클래스가 콤포넌트임을 알리는 표시이자 컴포넌트를 구성하는 정보를 전달할 때 쓰는 통로. @는 데코레이터라고 함. 경우에따라 JSON객체를 전달받음. @Component를 통해 앵귤러에 전달하는 컴포넌트를 구성하는 정보를 메타데이터하고 함. 메타데이터에는 컴포넌트와 연결된 뷰 정보인 템플릿, 스타일 정보 등이 있음.
+@Component안에 선언된 selector:app-root가 index.html <app-root></app-root>와 연결되어, 작성한 템플릿 코드가 바디 태그안에 삽입됨.
+앵귤러는 컴포넌트 개발로 시작하여 컴포넌트 개발로 끝난다고 해도 과언이 아니다. 컴포넌트와 템플릿, 메타데이터는 앵귤러 app에서 가장 중요한 핵심. 
+
+컴포넌트의 뷰 초기화 후 최초에 1회 실행되는 AfterViewInit이 있음. AppComponent에서 AfterViewInit인터페이스에 선언된 메소드인 ngAfterViewInit을 구현하면 뷰가 초기화될 때 앵귤러가 알아서 ngAfterViewInit 메소드를 호출해줌.
+
+사용자 제공 화면은 여러 컴포넌트의 조합으로 이루어짐. 컴포넌트 또한 여러 컴포넌트의 조합으로 이뤄지기도 함. 
+<!-- A component template part -->
+<my-foo></my-foo>
+<!-- A component template part -->
+<my-bar></my-bar>
+<!-- A component template part -->
+이렇게 하면 A component 안에 my-foo라는 selector를 가진 B컴포넌트와 my-bar라는 선택자를 가진 C컴포넌트가 들어가게 됨 -> 부모-자식 형태의 컴포넌트 트리 구성
+
+하나의 컴포넌트에는 컴포넌트 클래스 코드, 템플릿 정보 html 파일, 스타일 속성 css파일. 앵귤러 CLI의 generate 명령(g 만 써도됨)을 사용하면 컴포넌트 구성 관련 파일을 손쉽게 생성 가능. (ng g component welcome-msg) 이 명령은 루트, src, src/app 어디서 실행하든지 기본적으로 src/app 밑에 만들어줌.
+
+<label *ngIf="langCode ==='ko'">choosed</label> 에서 *ngIf는 주어진 조건이 참일 경우 자식을 포함한 해당 DOM을 렌더링하고 그렇지 않을 경우 DOM을 삭제하는 문법. 따라서 4번 줄의 LABEL 요소는 현재 langCode 값이 언어 코드와 동일할 때 보일 것임.
+<button type="button" (click)="setLangCode('ko')" [disabled]="langCode === 'ko'">Korean</button> 에서 [disabled]는 주어진 조건의 결과인 불리언 값을 실제 DOM 요소의 disabled 속성에 반영함. 이에 따라 현재 선택한 langCode인 경우 중복해 클릭하지 못하도록 비활성화 처리.
+
+앵귤러는 뷰와 컴포넌트에서 발생한 데이터의 변경 사항을 자동으로 일치시키는 데이터 바인딩을 지원함. 뷰와 컴포넌트 간의 관계를 선언함으로써 추가 수정작업을 하지 않게 해줌. 양방향 바인딩과 단방향 바인딩이 있는데, 양방향은 angularjs에서 전통적으로 지원했던 기능으로 컴포넌트 <-> 뷰 정보 변경사항을 일치. 단방향은 한쪽으로만.
+앞서 공부한 {{userName}은 삽입식이라고 하는 단방향 바인딩. 컴포넌트에 선언한 속성을 뷰에서 사용하는 것. <button type="button" (click)="setLangCode('ko')" [disabled]="langCode === 'ko'">Korean</button> 에서 [disabled]가 프로퍼티 바인딩. 이벤트 바인딩을 활용하면 DOM의 이벤트 핸들러로 컴포넌트의 메서드를 사용할 수 있음. 이벤트 대상을 ()로 선언한 후 우변에 핸들러로 사용할 메서드를 바인딩 - (click)="setLangCode('ko')" 부분.
+
+양방향데이터바인딩 사용방법중 하나는, FormsModule이 제공하는 NgModel 지시자를 활용하는 것. <input type="text" name="user-name" id="user-name" [(ngModel)]="userName" (ngModelChange)="onChange()"> ---> userName을 NgModel 지시자를 사용하여 양방향 바인딩으로 선언한 것. 양방향 바인딩된 값이 변경됐을 때 실행되는 ngModelChange이벤트를 onChange()메서드에 바인딩. 이렇게 되면 input 요소에 입력한 값은 자동으로 컴포넌트의 userName 속성에 반영. 반대로 컴포넌트 코드에서 userName을 변경할 경우에도 값이 뷰의 input요소에 반영. NgModel로 지정된 userName이 바뀌면 ngModelChange로 지정된 onchange가 실행
+양방향 바인딩시 한글 입력할 때에는 COMPOSITION_BUFFER_MODE가 필요
+
+서비스 & 의존성 주입 - 서비스는 애플리케이션의 비즈니스 로직을 담는 클래스. 서비스 사용 이유는 컴포넌트에서 비즈니스 로직을 분리하기 위해서. 컴포넌트는 뷰와 서비스의 비즈니스로직을 관리하는 컨트롤 타워 같은 역할. 비즈니스 로직은 가능한 한 서비스에 기술하는 것이 좋음.
+
+템플릿 문자열 : 백틱(backtick)(`)으로 문자열을 감싸 ${}표기를 사용하여 변수를 문자열에 삽입할 수 있음.(Template Literal 이라고도 부름)
+
+ES6의 클래스 문법은 클래스 내용 안에 메서드만을 수용하기 때문에 클래스의 속성을 추가할 때 생성자를 사용함. 그래서 TS에서는 생성자의 매개변수에 접근 제어자를 붙여 클래스의 속성으로 선언함. 이와같이 생성자에 인자로 선언할 때 앵귤러가 해주는 일이 있는데, 생성자에 매개변수로 선언한 I18nSupportService를 코드에서 new I18nSupportService()로 생성할 필요 없이 앵귤러에서 대신 클래스를 생성해 제공함. 이러한 과정을 의존성 주입이라고 함. 자바의 spring이 빈을 관리해주면서 의존성 주입으로 빈을 주입해주는 것과 동일. -> WelcomeMsg 컴포넌트 I18nSupportService에 의존하고 있고 앵귤러가 생성자로 생성해서 제공하는  I18nSupportService의 객체르 주입받아 사용할 수 있게 됨. -> 앵귤러 모듈에 선언이 필요함(src/app/app.module.ts)
+
+뷰의 상태는 뷰와 연관된 컴포넌트가 관리함. 여러 컴포넌트에 동일한 상태정보가 필요한 경우도 흔함. 이는 컴포넌트 기반으로 구축된 웹 app의 화면이 다양한 컴포넌트가 구성돼 만들어지기 때문. 컴포넌트간 데이터 공유의 한가지 방법은 langCode 상태를 서비스에 직접 저장하는 것
+
+앵귤러의 지시자는 템플릿을 동적으로 만들어주는 요소. 크게 구조 지시자(structural directive)와 속성 지시자(attribute directive)로 구분할 수 있음. 구조 지시자는 DOM의 구조를 동적으로 처리할 때 사용하고, 속성 지시자는 DOM의 속성을 앵귤러 방식으로 관리할 때 사용. 반복되는 템플릿을 간단하게 바꿀 수 있는 *ngFor라는 구조 지시자를 활용하여 언어 선택 템플릿을 개선할 수 있음.<ul><li *ngFor="let langCode of ['ko', 'en', 'jp', 'fr']">{{langCode}}</li></ul> 이 코드는 배열의 수만큼 li요소를 반복 생성합니다. 그리고 각 언어 코드가 langCode라는 지역 변수에 바인딩되어 LI요소 안에서 삽입식으로 뷰에 노출됨.
+
+앵귤러 파이프는 테플릿에 데이터를 보여줄 때 가공이 필요한 경우 사용. 어떤 컴포넌트에 price라는 변수가 있고 저장된 값이 829라고 할 때, 앵귤러에서 제공하는 CurrencyPipe를 사용하면 국가별 통화에 맞게 자동으로 가공된 데이터를 뷰에 노출시킬 수 있음. -> {{ price | currency:'USD' }} 라고 하면 USD829.00으로 보여줌. 생성 명령어는 ng g pipe lang-selector-btn. 로 생성된 ts파일 내에 @Pipe({ name: 'langSelectorBtn' }) 가 사용할 pipe의 이름이다. 이 이름을 템플릿에서 파이프와 함께 선언하면 해당 파이프가 적용.
+
+앵귤러 모듈은 앵귤러 안에서 관련된 요소를 하나로 묶어 애플리케이션을 구성하는 단위. 모든 앵귤러 app은 반드시 하나의 모듈을 가짐('루트 모듈') - 관례상 AppModule로 부르고 클래스를 생성함. 앵귤러 CLI로 프로젝트를 만들면 최초에 src/app/app.module.ts 파일이 함께 생성. 루트 모듈이 필요한 이유는 앵귤러는 모듈 단위로 애플리케이션의 코드를 인식하기 때문.
+
+앵귤러의 머티리얼 패키지 설치 예시 : npm i --save @angular/animations @angular/material hammerjs
+
+
+
+<<Environment Settings>>
+add extension - press "ctrl+p", type "ext install vscode-icons"
+Add "typescript.tsdk": "C:/Users/gwak0/AppData/Roaming/npm/node_modules/typescript/lib" in settings.json(vscode file)
+
+npm i @angular/cli -g
+
+<<wondering>>
+- 그냥 If를 안쓰고 ngIf를 쓰는 이유
 - save option in npm?
 - save dev option in npm?
-
 - h4 tag in html, name of head tag?
-
+- Bootstraping?
+- DOM?
 
 
 <<errors>>
 Updates were rejected because the tip of your current branch is behind
 https://blog.shovelman.dev/924
 do this, then new local changes are erased!
+
+powershell로는 ng 명령어가 안먹는 경우가 있다.
