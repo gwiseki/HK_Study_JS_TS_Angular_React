@@ -58,6 +58,42 @@ tp은 cp의 뷰를 구성하는 정보. ng는 표준 html에 ng만의 추가 요
 지시자 - 어떠한 대상에게 일련의 명령을 수행하게 함 - ng cp는 사실 컴포넌트이다(export interface Component extends Directive). Directive interface를 상속받아 지시자의 기본 속성에 tp, style정보 등 뷰를 그리는데 필요한 메타데이터를 추가함. -> 실제 뷰를 렌더링할 tp정보를 포함한 지시자의 특별한 케이스 -> 컴포넌트 트리 또한 지시자 트리라고 할 수 있다. 다만 cp는 뷰 정보를 가진 특수한 지시자이므로 cp를 자식으로 가질 수 있으나, 지시자는 뷰가 없으므로 cp를 자식으로 가질 수 없으며, tree의 root가 될 수 없음(leaf만 됨). 구조지시자/속성지시자
 
 구조지시자-NgIf, NgFor, NgSwitch
+NgIf예제
+<label *ngIf="isShow"; else hiding">You are special!</label>
+isShow가 true일 경우 LABEL 요소가 뷰에 활성화, false일 경우 lavel은 비활성화되고 hiding이 가리키는 템플릿 참조 변수의 요소가 DOM으로 삽입
+<div *ngIf="member">
+	<p>Name: {{member.name}}</p>
+	<p>Email: {{member.email}}</p>
+</div>
+member이 false일 경우 하위요소까지 모두 DOM트리에서 제거됨
+
+NgFor예제
+<ul>
+  <li *ngFor="let animal of animals; let idx = index">{{idx + 1}} {{animal}}</li>
+</ul>
+ngFor안에 let(배열요소)of(반복할배열)로 하고, idx가 필요하면 추가로 선언 가능.
+결과 DOM트리 :
+<ul>
+  <li>1 Dog</li>
+  <li>2 Dog2</li>
+  <li>3 Dog3</li>
+  <li>4 Dog4</li>
+</ul>
+
+NgSwitch 지시자도 존재함.
+
+ng-container : 구조 지시자를 사용하기 위해 불필요하게(더미로) 태그를 넣어주는 경우가 존재. DOM 트리에 불필요하게 요소를 추가하지 않으면서 구조 지시자를 사용하기 위해 사용하는 지시자. <ng-container></ng-container> 를 사용하면 그 부분은 DOM트리에 포함되지 않고 그 안의 내용만 뷰에 포함시킴.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
