@@ -1,0 +1,32 @@
+<div id="lang-select">
+    <div class = "lang-box" *ngFor="let lang of langMetadata">
+        <img src="{{'/assets/img/' + lang.flagImgName}}">
+        <label *ngIf="langCode ===lang.code">choosed</label>
+        <button type="button" (click)="setLangCode(lang.code)"
+            [disabled]="langCode === lang.code">{{ lang | langSelectorBtn }}</button>
+    </div>
+</div>
+
+<!--
+<div id="lang-select">
+    <div class = "lang-box">
+        <img src="/assets/img/South_Korea.png">
+        <label *ngIf="langCode ==='ko'">choosed</label>
+        <button type="button" (click)="setLangCode('ko')"
+            [disabled]="langCode === 'ko'">Korean</button>
+    </div>
+    <div class = "lang-box">
+        <img src="/assets/img/Japan.png">
+        <label *ngIf="langCode ==='jp'">choosed</label>
+        <button type="button" (click)="setLangCode('jp')"
+            [disabled]="langCode === 'jp'">Japan</button>
+    </div>
+    <div class = "lang-box">
+        <img src="/assets/img/United_States.png">
+        <label *ngIf="langCode ==='en'">choosed</label>
+        <button type="button" (click)="setLangCode('en')"
+            [disabled]="langCode === 'en'">US</button>
+    </div>
+</div>
+
+-->

@@ -1,0 +1,11 @@
+<h4>
+    {{welcomeMsg}}
+</h4>
+<div class="contents">
+    <label for="user-name">user name :</label>
+    <input type="text" name="user-name" id="user-name" [(ngModel)]="userName" (ngModelChange)="onChange()">
+    <button type="button" (click)="showWelcomeMsg()">INPUT</button>
+</div>
+<!--<button type="button" (click)="setName(nameInput.value)">Input</button>-->
+
+
