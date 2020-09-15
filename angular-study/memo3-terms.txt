@@ -21,3 +21,25 @@ git merge 방식 - fast-forward merge / non-fast-forward merge(merge -no-ff)
 
 --no-ff
 --ff와 달리 토픽 브랜치가 있었다는 정보가 남는다.
+
+TS 접근 제어자 - public, private, protected. default : public. 다른 OOP언어와 달리 readonly 키워드 사용 가능. 사용시 선언부 및 생성자에서만 값 할당 가능
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
