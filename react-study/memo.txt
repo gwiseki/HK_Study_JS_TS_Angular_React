@@ -760,14 +760,29 @@ hook/mobx/observable/지연/클로져/saga/generator
 
 
 
+09/15
+middleware(plugin)
 
+몽키패칭
+원래 것을 다른 것으로 바꿔놓는 것. 할일을 한 뒤, 다시 원래껄로 바꿔놓는다.
+몽키패칭이라고 했지만, 사실 하드코딩임. 그래도 좋게 느껴지지 않을 수 있다.
 
+sw에서 하나만 될 때와, 두 개가 될 때는 매우 큰 차이가 남.
+한 개일 때에는 매우 단순, 두 개는 n개가 된다는 의미이므로 엄청나게 복잡해진다.
 
+middleware
+데이터가 input으로 처리기를 거쳐 어떤 흐름을 거친 뒤 output으로 나갈때, 처리기 안에 몇가지 처리를 더 넣어주면 모든 input들은 그 처리들도 다 거쳐감(middleware)
+middleware는 plugin과 다르게, 데이터 10개가 들어가면 그 10개 모두가 흐름을 모두 거쳐감.
+당연히 꽂힌 순서대로 데이터가 거쳐감(흘러감). 순서가 있는 middle는 주의해야함. - A middleware는 B middleware 다음에 와야 한다 등.
 
+reverse()하는 이유?
 
+next를 안하고 ajax콜을 하고, 비동기적으로 응답이 오면 그때 next.
 
+강사님 왈 : react와 js의 차이를 잘 모르겠다. 그냥 거의 비슷함. js를 배워야하나.....?
 
-
+js 공부에 많이 도움되는 사이트
+https://github.com/leonardomso/33-js-concepts
 
 
 
