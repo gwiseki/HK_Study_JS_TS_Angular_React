@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MySpecialLoggerService } from './my-special-logger.service';
 import { LogLevel } from './log-level.enum';
 
-
 @Component({
   selector: 'mpl-root',
   templateUrl: './app.component.html',
@@ -10,11 +9,29 @@ import { LogLevel } from './log-level.enum';
 })
 export class AppComponent {
   title = 'mpl works!';
+  logger: MySpecialLoggerService;
 
-  constructor(private logger: MySpecialLoggerService) { }
+  constructor(){
+    this.logger = new MySpecialLoggerService(LogLevel.INFO);
+    this.testLoggerLevel();
+  }
 
-  printDebugLog() {
-    this.logger.debug("test depenency injector tree!");
+  testLoggerLevel(){
+    console.log("default- info log level");
+    this.logger.debug("d");
+    this.logger.info("i");
+    this.logger.warn("w");
+    this.logger.error("e");
+
+    this.logger.logLevel = LogLevel.DEBUG;
+    console.log("debug log level");
+    this.logger.debug("d");
+    this.logger.info("i");
+    this.logger.warn("w");
+    this.logger.error("e");
+
+
   }
 }
+
 

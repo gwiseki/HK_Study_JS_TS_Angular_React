@@ -1,0 +1,1 @@
+ng serve --open :: http://localhost:4200/으로 브라우저를 열어줍니다.

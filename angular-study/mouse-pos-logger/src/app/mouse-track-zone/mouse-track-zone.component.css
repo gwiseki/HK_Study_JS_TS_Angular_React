@@ -1,8 +1,8 @@
 :host {
-    display: inline-block;
-    padding: 5px;
-    border: 1px solid darkslategrey;
- }
+    display : inline-block;
+    padding : 5px;
+    border : 1px solid darkslategrey;
+}
 
 .track-zone {
     width: 200px;
