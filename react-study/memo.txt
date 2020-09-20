@@ -788,6 +788,29 @@ https://github.com/leonardomso/33-js-concepts
 
 
 
+------------------------------------------------------------------------------
+09/17 - webpack/reduxSaga
+
+settimeout 0을 걸어놔도 동기와는 무조건 다르게 흘러감.
+const aaaa = require(asdfsfd.js) 하는건 common js 문법
+
+webpack의 설정이 굉장히 복잡
+버전업 되면서 어제 됐던 것이 오늘 안되는 경우도 있음.
+꼭 webpack이 아니라 rollup?, paracel?도 있음.
+webpack은 그냥 platfrom같은 느낌.
+build는 첫번째 js파일부터 시작해서 그 파일이 읽어들이는 애들을 계속 읽어나가면서 merge시키는 것을 말하는데, webpack
+
+webpack.config.js 파일에서 entry : { } 부분에 있는 파일을 첫번쨰로 읽어들여서 거기에 포함되어있는 파일들을 쭉쭉 읽어나감. module :{ } 부분이 loader 부분.
+
+webpack에서 중요한 부분 중 하나는 loader. loader는 middleware에 해당하는 컨셉. webpack.config.js 파일에서 module :{ } 부분이 loader 부분.
+
+webpack은 이런 설정을 제공하는 platform이다.
+
+실제로는, 형식은, 실행파일임.(" .js ")
+
+그 다음 webpack에서 plugin이 있다. loader보다 훨씬 복잡. webpack의 안쪽에 있는 lowlevel 기능들을 모두 plugin에게 노출시켜주기 때문. plugin이 훨씬 많은 일을 할 수 있다.
+
+loader : converting, plugin : 그 후 처리, 라고 생각하면 됨.
 
 
 
