@@ -8,14 +8,13 @@ import { LogLevel } from './log-level.enum';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mpl works!';
-  logger: MySpecialLoggerService;
+  title = 'mpl works!'; 
 
-  constructor(){
+  constructor(private logger: MySpecialLoggerService) {
     this.logger = new MySpecialLoggerService(LogLevel.INFO);
-    this.testLoggerLevel();
+    // this.testLoggerLevel();
   }
-
+/*
   testLoggerLevel(){
     console.log("default- info log level");
     this.logger.debug("d");
@@ -31,7 +30,7 @@ export class AppComponent {
     this.logger.error("e");
 
 
-  }
+  }*/
 }
 
 
