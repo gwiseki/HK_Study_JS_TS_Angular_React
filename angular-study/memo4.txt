@@ -32,10 +32,11 @@ ng의 의존성 주입기는 @Injectable 여부로 인스턴스 생성시 생성
 반면 서비스의 경우 평범한 TS 클래스이기 때문에 생성자에 매개 변수를 선언해두어도 ng의 의존성 주입기가 의존성 주입이 필요한지를 확인할 방법이 없음. 그러므로 서비스에서 생성자의 매개 변수로 의존성 주입이 필요한 경우 클래스에 Injectable을 붙여야함. 생성자의 매개 변수로 주입받을 의존성 정보가 없다면 굳이 Injectable을 붙이지 않아도 되지만 관례상 코드의 확장을 위하여, 또는 버그 미연 방지로 Injectable 권장.
 
 MySpecialLoggerService는 생성자에 LogLevel타입의 매개 변수를 선언했기 때문에 Injectable을 클래스 선언에 붙여줘야함. 이로 인해 cp에서 의존성 주입기로 MySpecialLoggerService의 인스턴스를 주입받으려고 할 때 의존성 주입기는 MySpecialLoggerService에 붙어있는 Injectable을 보고 생성자에 선언된 매개 변수를 주입하려고 시도함. 그러므로 logLevel도 의존성 정보를 선언해야함. constructor(@Inject('logLevel') logLevel: LogLevel) { 이런식으로. Inject는 주입할 대상의 정보를 선언할 때 사용. 주입할 대상 타입이 클래스인 경우 ng가 자동으로 추론하여 주입하므로 Inject를 붙일 필요가 없으나 logLevel은 숫자값이므로 명시적으로 Inject 선언 필요.
-
 또 AppModule의 LogLevel에 대한 의존 정보 선언이 필요. providers: [MySpecialLoggerService, {provide : 'logLevel', useValue : 'LogLevel.INFO'}], 이렇게. 
 
+주입기 트리는 현재 cp에 필요한 서비스 클래스가 선언돼 있는 상위 cp까지 찾아 올라가서 해당 주입기로부터 서비스를 받게 함. cp에서도 새로운 서비스를 주입받을 수 있도록 @Component 에 providers 정보를 줄 수도 있음. @Ngmodule의 providers에 선언한 것과 동일하며, 차이는 cp레벨에서 새로운 서비스를 생성해 준다는 것.
 
+DI를 통해 MySpecialLoggerService의 인스턴스를 주입받는 것은 유지하면서 MouseTrackZoneComponent가 AppComponent로부터 독립적으로 로거 인스턴스를 주입받도록 하려면, MouseTrackZoneComponent의 메타데이터에서 providers에 MySpecialLoggerService를 추가하면 됨. 
 
 
 

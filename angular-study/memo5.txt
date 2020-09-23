@@ -1,1 +1,37 @@
 ng serve --open :: http://localhost:4200/으로 브라우저를 열어줍니다.
+
+
+
+
+
+
+
+
+
+
+
+-------observable-----------
+Observables provide support for passing messages between publishers and subscribers in your application.
+Observables are declarative—that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it. The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
+ you create an Observable instance that defines a subscriber function. This is the function that is executed when a consumer calls the subscribe() method.
+To execute the observable you have created and begin receiving notifications, you call its subscribe() method, passing an observer.
+
+observable은 앵귤러만의 기능은 아니고 ES7 릴리즈에 포함될 비동기 데이터 관리를 위한 새로운 표준.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
