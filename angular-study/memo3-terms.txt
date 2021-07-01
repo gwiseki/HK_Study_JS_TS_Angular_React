@@ -1,0 +1,45 @@
+JSON : JavaScript Object Notation, lightweight data-interchange format
+Angular : TS based open-source web application framework, MVC Model, SPA(Single Page Application)방식(단일 페이지 방식) - 웹개발 트렌드. 기존 웹 서비스는 요청마다 서버로부터 리소스들과 데이터를 해석, 화면에 렌더링하는 방식. SPA는 브라우저에 최초에 한번 페이지 전체를 로드, 이후부터는 특정 부분만 Ajax를 통해 데이터를 바인딩하는 방식.
+Angular 1.x -> Angular.js
+Angular 2.x ~ : Angular
+Module & component / Binding / Declarative Language / Dependency Injection
+jQuery : 간소화된 html 조작을 지원하는 JS Pacakage
+AJAX(Asynchronous JAvascript + XML)
+
+Node.js : C++로 만들어진 app framework.
+CSS : Cascading Style sheets
+Bootstrap : HTML/CSS/Javascript FE framework.
+lerna : JavaScript package dependency check & setup tool
+lerna 에서 가장 중요한 명령어는 bootstrap 이다. lerna bootstrap --hosit 를 실행하면, ignore 로 설정된 package 를 제외한 모든 package 의 npm install 을 실행한다. 이때 공통된 module 들은 root 의 node_modules 에 install 하고 각 package 들에 연결된다. 만약 각 package 별로 버전이 다를 경우, warning 메시지를 띄우고, package 의 node_modules 에 install 된다.
+각 패키지별로 버전이 다른경우를 체크할 수 있으며, 하나의 버전으로 모을 수 있다.
+lite-server : Lightweight development only node server that serves a web app, opens it in the browser, refreshes when html or javascript change, injects CSS changes using sockets, and has a fallback page when a route is not found.
+
+git merge 방식 - fast-forward merge / non-fast-forward merge(merge -no-ff)
+--ff
+로그가 하나로 되어 토픽 브랜치가 있었다는 정보가 없어진다.
+토픽 브랜치의 존재를 로그에 남길 필요가 없어 그대로 커밋해도 커밋 밀도에 문제가 없는 경우에 사용.
+
+--no-ff
+--ff와 달리 토픽 브랜치가 있었다는 정보가 남는다.
+
+TS 접근 제어자 - public, private, protected. default : public. 다른 OOP언어와 달리 readonly 키워드 사용 가능. 사용시 선언부 및 생성자에서만 값 할당 가능
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
