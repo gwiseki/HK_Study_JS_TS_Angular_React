@@ -3,7 +3,33 @@ ng serve --open :: http://localhost:4200/으로 브라우저를 열어줍니다.
 
 
 
+-------------------RxJS-------------------------------
+https://poiemaweb.com/angular-rxjs
+https://medium.com/@pks2974/rxjs-%EA%B0%84%EB%8B%A8%EC%A0%95%EB%A6%AC-41f67c37e028
+RxJS는 Reactive Extensions For JavaScript 라이브러리.
+ReactiveX 프로젝트에서 파생됨.
+ReactiveX는 Observer 패턴, Iterator 패턴, 함수형 프로그래밍을 조합하여 제공. RxJS는 이벤트 스트림을 Observable 객체로 표현 후 비동기 이벤트 기반 프로그램 작성을 도움.
 
+Reactive
+Reactive란 이벤트, 배열 등 데이터 스트림을 비동기로 처리, 변화에 유연하게 반응하는 프로그래밍 패러다임. 외부 통신 방식은 Pull/Push 시나리오.
+Pull 시나리오는 외부에서 명령하여 응답받고 처리. 데이터를 가지고 오기 위해서는 계속 호출해야.
+Push 시나리오는 외부에서 명령하고 기다리지 않고, 응답이 오면 그때 반응하여 처리. 데이터를 가지고 오기 위해서 구독해야.
+Reactive Programming 은 Push 시나리오 채택.
+
+비동기 처리는 콜백함수나 프로미스, Generator, async/await 또는 옵저버블로 구현. 콜백함수- 에러 처리가 어렵고 콜백 헬(Callback Hell) 등의 문제가 발생, 프로미스를 사용하는 것이 더 나은 방법이지만 프로미스는 한 번에 하나의 데이터를 처리하기 때문에 연속성을 갖는 데이터를 처리할 수 없다. 서버로 보낸 요청은 취소할 수 없다.
+옵저버블은 기존 비동기 처리 방식의 단점을 해결할 수 있는 더 나은 대안. 리액티브 프로그래밍은 다양한 형태의 데이터(동기데이터, 비동기데이터)를 처리가능
+다음과 같은 기능들이 있음.
+import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
+import { map, filter, scan, tap } from 'rxjs/operators';
+
+시간축을 따라 연속적으로 흐르는 데이터, 데이터 스트림을 생성하고 방출하는 객체를 옵저버블(Observable)
+옵저버블을 구독하여 옵저버블이 방출한 노티피케이션(Notification)을 전파받아 사용하는 객체를 옵저버(Observer)
+옵저버블은 연속성을 갖는 데이터를 스트리밍하고 옵저버는 연속적으로 보내진 데이터를 받아 처리
+데이터 소비자(Data consumer)-옵저버는 데이터 생산자(Data producer)-옵저버블을 구독(subscription).
+
+달러 기호에 유의. 옵저버블 변수 이름에 달러 기호를 사용하면 모범 사례로 간주. $는 Stream의 약어. 이렇게하면 변수가 관찰 가능 여부를 쉽게 식별 가능.
+
+옵저버블은 구독(subscribe)되기 전까지 동작하지 않음(Cold observable). RxJS의 옵저버블은 기본적으로 Cold observable. 구독되기 이전에는 데이터 스트림을 방출(emit) X. Cold observable을 옵저버가 구독하면 처음부터 동작하기 시작. -> 옵저버는 옵저버블이 방출하는 모든 데이터 스트림을 빠짐없이 처음부터 받을 수 있다.
 
 
 
@@ -18,8 +44,12 @@ To execute the observable you have created and begin receiving notifications, yo
 
 observable은 앵귤러만의 기능은 아니고 ES7 릴리즈에 포함될 비동기 데이터 관리를 위한 새로운 표준.
 
-
-
+Observable은 선언적. 즉, 값을 게시하는 함수를 정의해도, Consumer가 구독 하기전까지 실행되지 않는다.
+Observable 알람을 수신하기 위한 핸들러는 Observer 인터페이스를 구현. 이것은 Observable이 보낼수 있는 3가지 알람 타입을 처리할 수 있는 콜백 메서드가 정의된 객체.
+알람 종류	설명
+next	필수. 전달된 각각의 값을 처리하는 핸들러. 실행 시작후 0번 또는 그 이상 호출됩니다.
+error	선택사항. 오류 알람에 대한 처리 핸들러. 오류로 인해 Observable 인스턴스의 실행이 중지됩니다.
+complete	선택사항. 실행 완료 알람에 대한 처리 핸들러. 지연된 값은 실행 완료 후에도 계속해서 next 핸들러로 전달될 수 있습니다.
 
 
 
