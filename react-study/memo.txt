@@ -760,19 +760,57 @@ hook/mobx/observable/지연/클로져/saga/generator
 
 
 
+09/15
+middleware(plugin)
+
+몽키패칭
+원래 것을 다른 것으로 바꿔놓는 것. 할일을 한 뒤, 다시 원래껄로 바꿔놓는다.
+몽키패칭이라고 했지만, 사실 하드코딩임. 그래도 좋게 느껴지지 않을 수 있다.
+
+sw에서 하나만 될 때와, 두 개가 될 때는 매우 큰 차이가 남.
+한 개일 때에는 매우 단순, 두 개는 n개가 된다는 의미이므로 엄청나게 복잡해진다.
+
+middleware
+데이터가 input으로 처리기를 거쳐 어떤 흐름을 거친 뒤 output으로 나갈때, 처리기 안에 몇가지 처리를 더 넣어주면 모든 input들은 그 처리들도 다 거쳐감(middleware)
+middleware는 plugin과 다르게, 데이터 10개가 들어가면 그 10개 모두가 흐름을 모두 거쳐감.
+당연히 꽂힌 순서대로 데이터가 거쳐감(흘러감). 순서가 있는 middle는 주의해야함. - A middleware는 B middleware 다음에 와야 한다 등.
+
+reverse()하는 이유?
+
+next를 안하고 ajax콜을 하고, 비동기적으로 응답이 오면 그때 next.
+
+강사님 왈 : react와 js의 차이를 잘 모르겠다. 그냥 거의 비슷함. js를 배워야하나.....?
+
+js 공부에 많이 도움되는 사이트
+https://github.com/leonardomso/33-js-concepts
 
 
 
 
 
+------------------------------------------------------------------------------
+09/17 - webpack/reduxSaga
 
+settimeout 0을 걸어놔도 동기와는 무조건 다르게 흘러감.
+const aaaa = require(asdfsfd.js) 하는건 common js 문법
 
+webpack의 설정이 굉장히 복잡
+버전업 되면서 어제 됐던 것이 오늘 안되는 경우도 있음.
+꼭 webpack이 아니라 rollup?, paracel?도 있음.
+webpack은 그냥 platfrom같은 느낌.
+build는 첫번째 js파일부터 시작해서 그 파일이 읽어들이는 애들을 계속 읽어나가면서 merge시키는 것을 말하는데, webpack
 
+webpack.config.js 파일에서 entry : { } 부분에 있는 파일을 첫번쨰로 읽어들여서 거기에 포함되어있는 파일들을 쭉쭉 읽어나감. module :{ } 부분이 loader 부분.
 
+webpack에서 중요한 부분 중 하나는 loader. loader는 middleware에 해당하는 컨셉. webpack.config.js 파일에서 module :{ } 부분이 loader 부분.
 
+webpack은 이런 설정을 제공하는 platform이다.
 
+실제로는, 형식은, 실행파일임.(" .js ")
 
+그 다음 webpack에서 plugin이 있다. loader보다 훨씬 복잡. webpack의 안쪽에 있는 lowlevel 기능들을 모두 plugin에게 노출시켜주기 때문. plugin이 훨씬 많은 일을 할 수 있다.
 
+loader : converting, plugin : 그 후 처리, 라고 생각하면 됨.
 
 
 
